@@ -9,7 +9,19 @@
 </head>
 <body>
 	<h1>INDEX PAGE</h1>
-	
-	<a href='<c:url value="/about"></c:url>' >ACERCA DE </a>
+
+	<a href='<c:url value="/about"></c:url>'>ACERCA DE </a>
+	<br>
+	<br>
+	<a href='<c:url value="/admin"></c:url>'>ADMIN </a>
+
+	<br>
+	<br> Atributos del modelo
+	<br>Mensaje:
+	<c:out value="${mensaje}" />
+	<br>Resultado:
+	<c:out value="${sessionScope.resultado}" />
+
+
 </body>
 </html>

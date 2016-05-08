@@ -5,19 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>About</title>
+<title>Admin</title>
 </head>
 <body>
-
-	<h1>ABOUT PAGE</h1>
-
+	<h1>ADMIN PAGE</h1>
+	<br>
+	<a href='<c:url value="/about"></c:url>'>ACERCA DE </a>
+	<br>
 	<br> Atributos del modelo
 	<br>
+
 	<br>Mensaje:
 	<c:out value="${mensaje}" />
 	<br>Resultado:
 	<c:out value="${sessionScope.resultado}" />
-
 
 </body>
 </html>
