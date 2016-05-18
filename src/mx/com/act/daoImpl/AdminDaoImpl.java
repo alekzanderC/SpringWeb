@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component("adminDao")
 public class AdminDaoImpl implements AdminDao {
@@ -88,6 +89,7 @@ public class AdminDaoImpl implements AdminDao {
 		return jdbcTemplate.update("delete from admin where idAdmin=:idAd", new MapSqlParameterSource("idAd",id)) == 1;
 	}
 
+	@Transactional
 	@Override
 	public int[] saveAll(List<Admin> admins) {
 		SqlParameterSource[	] batchArgs = SqlParameterSourceUtils.createBatch(admins.toArray());

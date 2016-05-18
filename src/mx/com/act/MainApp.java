@@ -72,9 +72,9 @@ public class MainApp {
 			
 			//INSERT A BATCH
 			List<Admin> administradores = new ArrayList<>();
-			administradores.add(new Admin("Pedro", "jefe de ingenieria", ts));
-			administradores.add(new Admin("Eduardo Diaz", "Lider de proyecto", ts));
-			administradores.add(new Admin("Juan Loman", "Lider Usa", ts));
+			administradores.add(new Admin(50,"Pedro", "jefe de ingenieria", ts));
+			administradores.add(new Admin(51, "Eduardo Diaz", "Lider de proyecto", ts));
+			administradores.add(new Admin(32, "Juan Loman", "Lider Usa", ts));
 			
 			int[] vals = adminDao.saveAll(administradores);
 			
