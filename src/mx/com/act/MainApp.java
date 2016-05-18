@@ -1,6 +1,7 @@
 package mx.com.act;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -48,9 +49,9 @@ public class MainApp {
 			
 			//UPDATE ADMIN
 			Admin adminUpdate = new Admin();
-			adminUpdate.setIdAdmin(2);
-			adminUpdate.setNombre("Alex");
-			adminUpdate.setCargo("Admin");
+			adminUpdate.setIdAdmin(1);
+			adminUpdate.setNombre("Guisselle Cervantes");
+			adminUpdate.setCargo("Administradora");
 			adminDao.update(adminUpdate);
 			
 			//FIND ALL ADMINS FOR UPDATED ADMINS
@@ -60,14 +61,33 @@ public class MainApp {
 			}	
 			
 			//DELETE ADMIN
-			adminDao.delete(4);
+			adminDao.delete(2);
 			
 			//FIND ALL ADMINS FOR DELETED ADMINS
-			List<Admin> adminsDelet = adminDao.findAll(); System.out.println("ADMINS AFTER DELETION: ");
+			List<Admin> adminsDelet = adminDao.findAll(); 
+			System.out.println("ADMINS AFTER DELETION: ");
 			for (Admin admDe : adminsDelet) {
 				System.out.println(admDe);
 			}
 			
+			//INSERT A BATCH
+			List<Admin> administradores = new ArrayList<>();
+			administradores.add(new Admin("Pedro", "jefe de ingenieria", ts));
+			administradores.add(new Admin("Eduardo Diaz", "Lider de proyecto", ts));
+			administradores.add(new Admin("Juan Loman", "Lider Usa", ts));
+			
+			int[] vals = adminDao.saveAll(administradores);
+			
+			for (int i : vals) {
+				System.out.println("Fichas afectadas para la operación: "+i);
+			}
+			
+			//FIND ALL ADMINS AFTER ADMINS BATCH
+			List<Admin> adminsBatch = adminDao.findAll(); 
+			System.out.println("ADMINS AFTER BATCH: ");
+			for (Admin adminBa : adminsBatch) {
+				System.out.println(adminBa);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

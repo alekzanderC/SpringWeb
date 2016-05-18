@@ -15,6 +15,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
 
 @Component("adminDao")
@@ -84,5 +86,13 @@ public class AdminDaoImpl implements AdminDao {
 	public boolean delete(int id) {
 		
 		return jdbcTemplate.update("delete from admin where idAdmin=:idAd", new MapSqlParameterSource("idAd",id)) == 1;
+	}
+
+	@Override
+	public int[] saveAll(List<Admin> admins) {
+		SqlParameterSource[	] batchArgs = SqlParameterSourceUtils.createBatch(admins.toArray());
+		return jdbcTemplate.batchUpdate("insert into admin(idAdmin,nombre,cargo,fechaCreacion) "
+								+ "values(:idAdmin, :nombre,:cargo,:fechaCreacion)",
+								batchArgs);		
 	}
 }

@@ -46,4 +46,10 @@ public interface AdminDao {
 	 * @return boolean
 	 */
 	public boolean delete(int id);
+	
+	/**
+	 * Inserta una lista de Admins
+	 * @param admins
+	 */
+	public int[] saveAll(List<Admin> admins);
 }
